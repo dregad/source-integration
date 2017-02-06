@@ -72,6 +72,8 @@ class SourceGitphpPlugin extends MantisSourcePlugin {
 	public function update_repo_form( $p_repo ) {
 		$t_gitphp_root = null;
 		$t_gitphp_project = null;
+		$t_gitphp_user = null;
+		$t_gitphp_pass = null;
 
 		if ( isset( $p_repo->info['gitphp_root'] ) ) {
 			$t_gitphp_root = $p_repo->info['gitphp_root'];
@@ -79,6 +81,14 @@ class SourceGitphpPlugin extends MantisSourcePlugin {
 
 		if ( isset( $p_repo->info['gitphp_project'] ) ) {
 			$t_gitphp_project = $p_repo->info['gitphp_project'];
+		}
+
+		if ( isset( $p_repo->info['gitphp_user'] ) ) {
+			$t_gitphp_user = $p_repo->info['gitphp_user'];
+		}
+
+		if ( isset( $p_repo->info['gitphp_pass'] ) ) {
+			$t_gitphp_pass = $p_repo->info['gitphp_pass'];
 		}
 
 		if ( isset( $p_repo->info['master_branch'] ) ) {
@@ -97,6 +107,18 @@ class SourceGitphpPlugin extends MantisSourcePlugin {
 	<td class="category"><?php echo plugin_lang_get( 'gitphp_project' ) ?></td>
 	<td>
 		<input type="text" name="gitphp_project" maxlength="250" size="40" value="<?php echo string_attribute( $t_gitphp_project ) ?>"/>
+	</td>
+</tr>
+<tr>
+	<td class="category"><?php echo plugin_lang_get( 'gitphp_user' ) ?></td>
+	<td>
+		<input type="text" name="gitphp_user" maxlength="250" size="40" value="<?php echo string_attribute( $t_gitphp_user ) ?>"/>
+	</td>
+</tr>
+<tr>
+	<td class="category"><?php echo plugin_lang_get( 'gitphp_pass' ) ?></td>
+	<td>
+		<input type="text" name="gitphp_pass" maxlength="250" size="40" value="<?php echo string_attribute( $t_gitphp_pass ) ?>"/>
 	</td>
 </tr>
 <tr>
