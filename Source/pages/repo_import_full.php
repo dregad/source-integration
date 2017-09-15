@@ -58,6 +58,7 @@ if ( $t_error ) {
 
 # otherwise, rename and save the new repo, then delete the old
 } else {
+	$t_new_repo->name = $t_repo->name;
 	$t_new_repo->save();
 
 	SourceRepo::delete( $t_repo->id );
