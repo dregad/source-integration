@@ -124,25 +124,6 @@ class SourcePlugin extends MantisSourceBase {
 		plugin_child( 'SourceIntegration' );
 	}
 
-	function errors() {
-		$t_errors_list = array(
-			self::ERROR_CHANGESET_MISSING_ID,
-			self::ERROR_CHANGESET_MISSING_REPO,
-			self::ERROR_CHANGESET_INVALID_REPO,
-			self::ERROR_FILE_MISSING,
-			self::ERROR_FILE_INVALID_CHANGESET,
-			self::ERROR_PRODUCTMATRIX_NOT_LOADED,
-			self::ERROR_REPO_MISSING,
-			self::ERROR_REPO_MISSING_CHANGESET,
-		);
-
-		foreach( $t_errors_list as $t_error ) {
-			$t_errors[$t_error] = plugin_lang_get( 'error_' . $t_error );
-		}
-
-		return array_merge( parent::errors(), $t_errors );
-	}
-
 	/**
 	 * Register source integration plugins with the framework.
 	 */

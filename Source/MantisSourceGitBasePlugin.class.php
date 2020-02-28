@@ -52,15 +52,18 @@ abstract class MantisSourceGitBasePlugin extends MantisSourcePlugin
 	 * @return array
 	 */
 	public function errors() {
-		$t_errors_list = array(
-			self::ERROR_INVALID_BRANCH,
+		# Special processing for error messages defined in Git base class, which
+		# is not a VCS plugin and has its strings defined in 'Source' plugin.
+		$t_git_base_constants = $this->getErrorConstants( self::class );
+
+		# Remaining constants are defined in the Git VCS plugin class
+		$t_other_constants = array_diff($this->getErrorConstants(), $t_git_base_constants );
+
+		$t_errors = array_merge(
+			$this->getErrorStrings( $t_git_base_constants, 'Source' ),
+			$this->getErrorStrings( $t_other_constants )
 		);
-
-		foreach( $t_errors_list as $t_error ) {
-			$t_errors[$t_error] = plugin_lang_get( 'error_' . $t_error, 'Source' );
-		}
-
-		return array_merge( parent::errors(), $t_errors );
+		return $t_errors;
 	}
 
 	/**

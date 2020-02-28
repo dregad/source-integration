@@ -43,20 +43,6 @@ class SourceSVNPlugin extends MantisSourcePlugin {
 		);
 	}
 
-	public function errors() {
-		$t_errors_list = array(
-			self::ERROR_PATH_INVALID,
-			self::ERROR_SVN_RUN,
-			self::ERROR_SVN_CMD,
-		);
-
-		foreach( $t_errors_list as $t_error ) {
-			$t_errors[$t_error] = plugin_lang_get( 'error_' . $t_error, 'SourceSVN' );
-		}
-
-		return array_merge( parent::errors(), $t_errors );
-	}
-
 	public $type = 'svn';
 
 	public $configuration = true;
